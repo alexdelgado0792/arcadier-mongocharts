@@ -10,14 +10,14 @@ function MarketplaceMongoChart() {
         if (document.getElementById('packageId').value === this.packageId) {
 
             //TODO: Get configuration from Arcadier CT and also create a config page for it. 
-            this.RenderPrivateMongoDashboard("REALM APP ID","API KEY", "https://charts.mongodb.com/SOME-IDENTIFIER", "MONGO DASHBOARD ID");
+            this.RenderPrivateMongoDashboard("REALM APP ID", "API KEY", "https://charts.mongodb.com/SOME-IDENTIFIER", "MONGO DASHBOARD ID");
         }
     }
 }
 
 MarketplaceMongoChart.prototype.RenderPrivateMongoDashboard = function (realAppId, apiKey, chartBaseUrl, mongoDashboardId) {
 
-    this.loginApiKey(apiKey,realAppId).then(user => {
+    this.loginApiKey(apiKey, realAppId).then(user => {
         const sdk = new ChartsEmbedSDK({
             baseUrl: chartBaseUrl,
             getUserToken: () => marketplace_chart.getUserToken(user)
@@ -38,7 +38,7 @@ MarketplaceMongoChart.prototype.RenderPrivateMongoDashboard = function (realAppI
 
         // render the chart into a container
         dashboard.render(document.getElementById('dashboard'))
-        .catch(() => window.alert('Dashboard failed to initialise'));
+            .catch(() => window.alert('Dashboard failed to initialise'));
     });
 
 }
@@ -57,8 +57,7 @@ MarketplaceMongoChart.prototype.loginApiKey = async function (apiKey, realAppId)
     try {
         // Authenticate the user
         const user = await app.logIn(credentials);
-        // `App.currentUser` updates to match the logged in user
-        console.assert(user.id === app.currentUser.id);
+
         return user;
     } catch (err) {
         console.error("Failed to log in", err);
