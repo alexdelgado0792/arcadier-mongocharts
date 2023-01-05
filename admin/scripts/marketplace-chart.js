@@ -48,9 +48,9 @@ MarketplaceMongoChart.prototype.getUserToken = function (user) {
 }
 
 MarketplaceMongoChart.prototype.loginApiKey = async function (apiKey, realAppId) {
-    // Create an API Key credential
+    
     const app = new Realm.App({
-        id: realAppId, // Optional: ~REPLACE~ with your Realm App ID
+        id: realAppId
     });
 
     const credentials = Realm.Credentials.apiKey(apiKey);
@@ -66,7 +66,7 @@ MarketplaceMongoChart.prototype.loginApiKey = async function (apiKey, realAppId)
 
 MarketplaceMongoChart.prototype.RenderPublicMongoDashboard = function (chartBaseUrl, mongoDashboardId) {
     const sdk = new ChartsEmbedSDK({
-        baseUrl: chartBaseUrl,
+        baseUrl: chartBaseUrl
     });
 
     //   // embed a chart
